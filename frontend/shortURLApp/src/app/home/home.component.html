@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <div class="row justify-content-center mt-5">
+        <div class="col-12 text-center"><h1 class="display-4">Short your URL!</h1></div>
+        <div class="col-6 form-container">
+            <form [formGroup]="urlForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="longUrlInput">Enter long url here</label>
+                    <input type="text" class="form-control" id="longUrlInput"  name="longUrlInput" formControlName="longURL" required>
+                    <div *ngIf="formControls.longURL.touched && formControls.longURL.invalid" class="text-danger">
+                        <div *ngIf="formControls.longURL.errors?.required">*Please provide url</div>
+                        <div *ngIf="formControls.longURL.errors?.pattern">*Please provide valid url</div>
+                    </div>
+                </div>
+                <div class="error-div text-danger">{{errorMsg}}</div>
+                <button class="btn btn-primary"type="submit" [disabled]="!urlForm.valid">Create</button>
+            </form>
+            <div *ngIf= "isCreated">
+                <p>Below is your short url! It will expire in 5 mins :)</p>
+                <div class="" id="shortUrlDisplay" name="shortUrlDisplay"><a href={{shortURL}} target="_blank" (click)= "startTimer()">{{shortURL}}</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-12 text-center"><h4 class="text-muted">Search here</h4></div>
+        <div class="col-6 form-container search-box">
+            <form [formGroup]="searchForm" (ngSubmit)="onSubmitSearch()">
+                <div class="form-group">
+                    <label for="searchlongURLInput">Enter long url here to search</label>
+                    <input type="text" class="form-control" id="searchlongURLInput"  name="searchlongURLInput" formControlName="searchlongURL" required>
+                </div>
+                <button class="btn btn-success"type="submit" [disabled]="!searchForm.valid">Search</button>
+            </form>
+            <div *ngIf= "isSearched">
+                <p>Below is already existing short url </p>
+                <div class="" id="searchShortUrlDisplay" name="searchShortUrlDisplay"><a href={{searchShortURL}} target="_blank">{{searchShortURL}}</a></div>
+            </div>
+        </div>
+    </div>
+</div>

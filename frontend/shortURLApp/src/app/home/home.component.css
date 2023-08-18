@@ -1,0 +1,13 @@
+.form-container{
+    box-shadow: 0px 5px 10px 0px rgba(172, 179, 179, 0.7);
+    padding : 10px;
+    border-radius: 10px;
+}
+
+.form-container:hover{
+    box-shadow: 0px 5px 10px 0px rgba(84, 196, 248, 0.7);  
+}
+
+.search-box:hover{
+    box-shadow: 0px 5px 10px 0px rgba(84, 248, 125, 0.7);
+}
